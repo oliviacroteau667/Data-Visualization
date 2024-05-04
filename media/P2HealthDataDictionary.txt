@@ -1,0 +1,66 @@
+*** Data Dictionary from the 2021 CDC PLACES Project: Local Data for Better Health
+ and Census American Community Survey (5-year) ***
+ 
+*** Compiled by WM Harris for IGME-102 P2: Health Visualization
+
+SOURCES:
+* CDC PLACES Project: Local Data for Better Health (166 tracts per state) https://www.cdc.gov/places 
+https://data.cdc.gov/api/views/cwsq-ngmh/rows.csv?date=20231016&accessType=DOWNLOAD
+
+* 2021 Census demographic data for NY Monroe county & NC Mecklenburg county census tracts
+https://api.census.gov/data/2021/acs/acs5?get=B01001_001E,B01001_003E,B01001_004E,B01001_005E,B01001_006E,B01001_027E,B01001_028E,B01001_029E,B01001_030E,B03002_003E,B05001_006E,B06011_001E,B17025_002E,B19058_002E,B19083_001E,B25064_001E,B25107_001E,NAME&for=tract:*&in=county:055,in=state:36
+https://api.census.gov/data/2021/acs/acs5?get=B01001_001E,B01001_003E,B01001_004E,B01001_005E,B01001_006E,B01001_027E,B01001_028E,B01001_029E,B01001_030E,B03002_003E,B05001_006E,B06011_001E,B17025_002E,B19058_002E,B19083_001E,B25064_001E,B25107_001E,NAME&for=tract:*&in=county:119,in=state:37
+
+* 2021 Gazetteer census tract data for NY and NC
+https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_gaz_tracts_36.txt
+https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2021_Gazetteer/2021_gaz_tracts_37.txt
+
+JSON OBJECT PROPERTIES *************************** 
+
+	*** Properties from the CENSUS Data Source
+	
+	["population"]	Total census tract population 
+	["fullName"]	Tract (ID + county + state) name
+	["countyId"] 	County ID
+	["stateId"] 	State ID
+	["tract"]		Tract ID
+	["adults"]		Population: Adult
+	["acs"]			Array of American Community Survey data for tract:
+			0:		Population: White, non-Hispanic/Latino
+			1:		Population: Not a U.S. citizen
+			2:		Median household income $
+			3:	   	Population: Income below poverty level
+			4:		Population: Receive cash or Food Stamps/SNAP public assistance
+			5:		GINI index of income inequality (bigger is worse, max 1)
+			6:		Median gross rent $
+			7:		Median value of housing $
+	["state"]		State name
+    ["lon"]			Locality longitude (more positive = more East)
+					Monroe Co, NY range: -77.96 to -77.41
+					Mecklenburg Co, NC range: -81.04 to -80.59
+    ["lat"]			Locality latitude (more positive = more North)
+					Monroe Co, NY range: 43.33 to 42.96
+					Mecklenburg Co, NC range: 35.51 to 35.01
+						
+	*** Properties from the CDC Data Source
+	
+	["popStudied"]	Total *estimated* CDC study population (adults)
+    ["outcomes"]	(object of poor Health Outcome measures)
+    				https://www.cdc.gov/places/measure-definitions/health-outcomes
+    	Measure identifier : percent in CDC study population
+    				 		
+	["preventions"]	(object of  Prevention measures) 
+    				https://www.cdc.gov/places/measure-definitions/prevention
+    	Measure identifier : percent in CDC study population
+    	
+	["risks"]		(object of Health Risk Behavior measures)
+    				https://www.cdc.gov/places/measure-definitions/unhealthy-behaviors
+    	Measure identifier : percent in CDC study population
+    	
+    ["statuses"]	(object of poor Health Status measures)
+    				https://www.cdc.gov/places/measure-definitions/health-status
+    	Measure identifier : percent in CDC study population
+    	
+	["disabilities"]	(object of Disability measures)
+    				https://www.cdc.gov/places/measure-definitions/disability
+    	Measure identifier : percent in CDC study population
